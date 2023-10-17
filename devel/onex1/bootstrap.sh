@@ -46,8 +46,8 @@ echo "Your platform is $OS_PLATFORM/$OS_ARCH"
 # Install onexd binary if it doesn't exist
 if [ ! -f "onexd" ]; then
   echo "Downloading onex $ONEX_VERSION binary"
-    wget --quiet -O ./onomyd "https://github.com/onomyprotocol/onomy/releases/download/$ONEX_VERSION/onexd"
-  chmod +x ./onomyd
+    wget -O ./onexd "https://github.com/onomyprotocol/multiverse/releases/download/$ONEX_VERSION/onexd"
+  chmod +x ./onexd
 fi
 
 
