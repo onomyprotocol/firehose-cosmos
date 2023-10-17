@@ -67,15 +67,15 @@ fi
 case $NETWORK in
   mainnet) # Setting up persistent peers
    echo "Configuring p2p seeds"
-    sed -i -e 's/persistent_peers = ""//persistent_peers = "954c1b86d9a4ee0488be6abc57a0488a88d85fba@34.66.225.143:26657,e7ea2a55be91e35f5cf41febb60d903ed2d07fea@34.86.135.162:26657,2a40d447fe1aeaa666621906b26ad40089aa6a6c@180.131.222.73:26756,6eb9d594e39e2c9d089f9a8f1677e574f986e50a@64.71.153.55:26756"g' $ONEX_HOME/config/config.toml 
+    sed -i -e 's/persistent_peers = ""/persistent_peers = "954c1b86d9a4ee0488be6abc57a0488a88d85fba@34.66.225.143:26657,e7ea2a55be91e35f5cf41febb60d903ed2d07fea@34.86.135.162:26657,2a40d447fe1aeaa666621906b26ad40089aa6a6c@180.131.222.73:26756,6eb9d594e39e2c9d089f9a8f1677e574f986e50a@64.71.153.55:26756"/g' $ONEX_HOME/config/config.toml 
   ;;
   testnet) # Setting up persistent peers
     echo "Configuring p2p seeds"
-    sed -i -e 's/persistent_peers = ""//persistent_peers = "954c1b86d9a4ee0488be6abc57a0488a88d85fba@34.66.225.143:26657,e7ea2a55be91e35f5cf41febb60d903ed2d07fea@34.86.135.162:26657,2a40d447fe1aeaa666621906b26ad40089aa6a6c@180.131.222.73:26756,6eb9d594e39e2c9d089f9a8f1677e574f986e50a@64.71.153.55:26756"g' $ONEX_HOME/config/config.toml
+    sed -i -e 's/persistent_peers = ""/persistent_peers = "954c1b86d9a4ee0488be6abc57a0488a88d85fba@34.66.225.143:26657,e7ea2a55be91e35f5cf41febb60d903ed2d07fea@34.86.135.162:26657,2a40d447fe1aeaa666621906b26ad40089aa6a6c@180.131.222.73:26756,6eb9d594e39e2c9d089f9a8f1677e574f986e50a@64.71.153.55:26756"/g' $ONEX_HOME/config/config.toml
   ;;
 esac
 
-cat << END >> onex_home/config/config.toml
+cat << END >> $ONEX_HOME/config/config.toml
 
 #######################################################
 ###       Extractor Configuration Options     ###
@@ -97,7 +97,7 @@ start:
     common-live-blocks-addr:
     reader-mode: node
     reader-node-path: ./onexd
-    reader-node-args: start --x-crisis-skip-assert-invariants --home=./onex_home
+    reader-node-args: start --x-crisis-skip-assert-invariants --home=./$ONEX_HOME
     reader-node-logs-filter: "module=(p2p|pex|consensus|x/bank)"
     relayer-max-source-latency: 99999h
     verbose: 1
